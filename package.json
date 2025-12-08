@@ -33,8 +33,16 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepare": "npm run build"
   },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "package.json",
+    "tsconfig.json"
+  ],
   "dependencies": {
     "axios": "^1.13.2",
     "date-fns": "^3.0.0",
