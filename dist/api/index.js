@@ -12,6 +12,8 @@ export { getRideQuote, requestRide, getRide, getActiveRide, acceptRide, startRid
 export { createScheduledRide, getMarketplace, acceptScheduledRide, getMyScheduledRides, confirmScheduledRide, cancelScheduledRide } from './scheduled';
 // Drivers
 export { getDriverStatus, updateDriverAvailability, updateDriverLocation, getDriverEarnings, getDriverHistory, requestPayout, getDriverAgenda } from './drivers';
+// Distance (Google Maps)
+export { calculateRealDistance, calculateRouteWithStops, calculateTripDistance } from './distance';
 // Passengers
 export { getPassengerHistory, getPassengerScheduledRides, getPaymentMethods, deletePaymentMethod, getPassengerDebtInfo, getUserBalance, } from './passengers';
 // Payments

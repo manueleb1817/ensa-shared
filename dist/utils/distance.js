@@ -3,12 +3,20 @@
 // ✅ DISTANCE & GEOLOCATION UTILITIES
 // ═══════════════════════════════════════════════════════════
 /**
- * ✅ Calcular distancia entre dos coordenadas usando fórmula Haversine
+ * ⚠️ DEPRECATED: Usar calculateRealDistance() del backend
+ *
+ * Calcular distancia APROXIMADA entre dos coordenadas usando Haversine (línea recta)
+ *
+ * ⚠️ IMPORTANTE: Esta función calcula distancia en LÍNEA RECTA, NO rutas reales.
+ *    Para distancias de conducción, usar Google Maps Distance Matrix API.
+ *
  * @param lat1 - Latitud punto 1
  * @param lon1 - Longitud punto 1
  * @param lat2 - Latitud punto 2
  * @param lon2 - Longitud punto 2
- * @returns Distancia en MILLAS
+ * @returns Distancia aproximada en MILLAS (línea recta)
+ *
+ * @deprecated Usar API backend /api/distance/calculate para distancias reales
  */
 export const getDistanceBetween = (lat1, lon1, lat2, lon2) => {
     const R = 3958.8; // Radio de la Tierra en millas
@@ -18,7 +26,7 @@ export const getDistanceBetween = (lat1, lon1, lat2, lon2) => {
         Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
             Math.sin(dLon / 2) * Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const distance = R * c; // Distancia en millas
+    const distance = R * c; // Distancia en millas (línea recta)
     return distance;
 };
 /**

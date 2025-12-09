@@ -35,13 +35,13 @@ export const SCHEDULED_ENDPOINTS = {
 };
 // Drivers
 export const DRIVER_ENDPOINTS = {
-    STATUS: '/api/drivers/status',
-    AVAILABILITY: '/api/drivers/availability',
-    EARNINGS: '/api/drivers/earnings',
-    HISTORY: '/api/drivers/history',
-    PAYOUT_REQUEST: '/api/drivers/payout-request',
-    AGENDA: '/api/drivers/agenda',
-    LOCATION: '/api/drivers/location',
+    STATUS: '/api/driver/status',
+    AVAILABILITY: '/api/driver/availability',
+    EARNINGS: '/api/driver/earnings',
+    HISTORY: '/api/driver/history',
+    PAYOUT_REQUEST: '/api/driver/payout-request',
+    AGENDA: '/api/driver/agenda',
+    LOCATION: '/api/driver/location',
 };
 // Passengers
 export const PASSENGER_ENDPOINTS = {
