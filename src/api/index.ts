@@ -44,6 +44,19 @@ export {
   getDriverAgenda
 } from './drivers';
 
+// Distance (Google Maps)
+export {
+  calculateRealDistance,
+  calculateRouteWithStops,
+  calculateTripDistance
+} from './distance';
+export type {
+  Coordinates,
+  DistanceResult,
+  RouteWithStopsResult,
+  DistanceOptions
+} from './distance';
+
 // Passengers
 export {
   getPassengerHistory,

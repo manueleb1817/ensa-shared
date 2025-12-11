@@ -71,6 +71,54 @@ export interface User {
     paymentMethodId: string;
   };
   
+  // Weekly Payment Plan (NEW)
+  weeklyPaymentAccess?: {
+    requested?: boolean;
+    approved?: boolean;
+    requestData?: {
+      pickupAddress: string;
+      pickupCoordinates: { lat: number; lng: number };
+      dropoffAddress: string;
+      dropoffCoordinates: { lat: number; lng: number };
+      reason?: string;
+      estimatedWeeklyUsage?: number;
+      requestedAt?: Date | string;
+    };
+    approvalData?: {
+      approvedBy?: string;
+      approvedAt?: Date | string;
+      weeklyAmount?: number;
+      pickupAddress?: string;
+      dropoffAddress?: string;
+    };
+    rejectionData?: {
+      rejectedBy?: string;
+      rejectedAt?: Date | string;
+      reason?: string;
+    };
+    adminActions?: Array<{
+      adminId: string;
+      action: string;
+      reason?: string;
+      timestamp: Date | string;
+    }>;
+    routeChangeRequests?: any[];
+  };
+  
+  stripePaymentMethods?: Array<{
+    id: string;
+    type: string;
+    brand?: string;
+    last4?: string;
+    expMonth?: number;
+    expYear?: number;
+    isDefault: boolean;
+  }>;
+  
+  isBlocked?: boolean;
+  blockReason?: 'unpaid_weekly_plan' | 'admin_action' | 'fraud' | 'terms_violation' | null;
+  blockedAt?: Date | string;
+  
   // Disponibilidad (conductor)
   disponible?: boolean;
   
