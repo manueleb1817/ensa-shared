@@ -9,6 +9,7 @@ export * from './types/Ride';
 export * from './constants/config';
 export * from './constants/colors';
 export * from './constants/endpoints';
+export * from './constants/rideStates';
 // Utils
 export * from './utils/platform';
 export * from './utils/pricing';
