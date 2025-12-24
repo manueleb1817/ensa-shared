@@ -105,3 +105,95 @@ export const getPhaseFromStatus = (status: string, isScheduled: boolean = false)
   // Fallback
   return 'confirmation';
 };
+
+// ═══════════════════════════════════════════════════════════
+// ✅ UTILITY FUNCTIONS - Funciones auxiliares para estados
+// ═══════════════════════════════════════════════════════════
+
+/**
+ * Normaliza estados legacy a los estados actuales
+ */
+export const normalizeState = (estado: string): string => {
+  switch(estado) {
+    case 'driver_arriving':
+    case 'conductor_en_camino':
+    case 'conductor_llego':
+    case 'driver_arrived':
+    case 'arrived':
+      return RIDE_STATES.DRIVER_AT_ORIGIN;
+    case 'in_progress':
+      return RIDE_STATES.IN_PROGRESS;
+    case 'completado':
+      return RIDE_STATES.COMPLETED;
+    case 'cancelado':
+      return RIDE_STATES.CANCELLED;
+    default:
+      return estado;
+  }
+};
+
+/**
+ * Obtiene el label legible de un estado según el rol del usuario
+ */
+export const getStateLabel = (estado: string, role: 'driver' | 'passenger'): string => {
+  if (role === 'driver') {
+    switch(estado) {
+      case RIDE_STATES.PENDING:
+        return 'Esperando asignación';
+      case RIDE_STATES.ACCEPTED:
+        return 'Dirígete al punto de recogida';
+      case RIDE_STATES.CONDUCTOR_EN_CAMINO:
+      case RIDE_STATES.DRIVER_AT_ORIGIN:
+      case RIDE_STATES.DRIVER_ARRIVING:
+        return 'En camino al pasajero';
+      case RIDE_STATES.CONDUCTOR_LLEGO:
+      case RIDE_STATES.DRIVER_ARRIVED:
+        return 'Esperando al pasajero';
+      case RIDE_STATES.IN_PROGRESS:
+        return 'Viaje en curso';
+      case RIDE_STATES.COMPLETED:
+        return 'Viaje completado';
+      case RIDE_STATES.CANCELLED:
+        return 'Viaje cancelado';
+      default:
+        return `Estado: ${estado}`;
+    }
+  } else {
+    // Passenger labels
+    switch(estado) {
+      case RIDE_STATES.PENDING:
+        return 'Buscando conductor...';
+      case RIDE_STATES.ACCEPTED:
+        return 'Conductor aceptado';
+      case RIDE_STATES.CONDUCTOR_EN_CAMINO:
+      case RIDE_STATES.DRIVER_AT_ORIGIN:
+      case RIDE_STATES.DRIVER_ARRIVING:
+        return 'Conductor en camino';
+      case RIDE_STATES.CONDUCTOR_LLEGO:
+      case RIDE_STATES.DRIVER_ARRIVED:
+        return 'Conductor ha llegado';
+      case RIDE_STATES.IN_PROGRESS:
+        return 'Viaje en curso';
+      case RIDE_STATES.COMPLETED:
+        return 'Viaje completado';
+      case RIDE_STATES.CANCELLED:
+        return 'Viaje cancelado';
+      default:
+        return `Estado: ${estado}`;
+    }
+  }
+};
+
+/**
+ * Verifica si un estado es activo (no terminal)
+ */
+export const isActiveState = (estado: string): boolean => {
+  return ACTIVE_RIDE_STATES.includes(estado as RideStatus);
+};
+
+/**
+ * Verifica si un estado es terminal (finalizado)
+ */
+export const isTerminalState = (estado: string): boolean => {
+  return TERMINAL_STATES.includes(estado as RideStatus);
+};
