@@ -22,7 +22,12 @@ export const SCHEDULED_STATUS = {
     IN_PROGRESS: 'in_progress', // Viaje en curso (pasajero en auto)
     COMPLETED: 'completed', // Completado exitosamente
     CANCELLED: 'cancelled', // Cancelado
-    ERROR: 'error' // Error del sistema
+    ERROR: 'error', // Error del sistema
+    // ⚠️ LEGACY: Estados antiguos que pueden aparecer en datos históricos
+    /** @deprecated Use DRIVER_EN_ROUTE instead */
+    ACTIVE: 'active', // LEGACY: Equivalente a DRIVER_EN_ROUTE
+    /** @deprecated Use DRIVER_ARRIVED instead */
+    ARRIVED: 'arrived' // LEGACY: Equivalente a DRIVER_ARRIVED
 };
 /**
  * Estados que indican que el viaje programado está activo (no finalizado)

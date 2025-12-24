@@ -18,6 +18,10 @@ export declare const SCHEDULED_STATUS: {
     readonly COMPLETED: "completed";
     readonly CANCELLED: "cancelled";
     readonly ERROR: "error";
+    /** @deprecated Use DRIVER_EN_ROUTE instead */
+    readonly ACTIVE: "active";
+    /** @deprecated Use DRIVER_ARRIVED instead */
+    readonly ARRIVED: "arrived";
 };
 export type ScheduledStatus = typeof SCHEDULED_STATUS[keyof typeof SCHEDULED_STATUS];
 /**
